@@ -13,6 +13,7 @@ class Hfinder(object):
         if self.downScale:
             self.img = cv2.resize(self.img, (self.img.shape[1]//2, self.img.shape[0]//2))
         self.court2D = court2D
+        print(type(self.court2D))
         self.court3D = court3D
         self.H = np.zeros((3,3)) # mapping 2D pixel to wcs 3D plane
         self.calculateH(self.img)

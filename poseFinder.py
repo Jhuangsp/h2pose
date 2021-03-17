@@ -23,7 +23,7 @@ class poseFinder(H2Pose):
         super(poseFinder, self).__init__(self.K, self.H)
     
     def FindH(self):
-        self.hf_obj = Hfinder(self.img, pad=self.pad, downScale=self.downScale)
+        self.hf_obj = Hfinder(self.img, court2D=[], pad=self.pad, downScale=self.downScale)
         self.H = self.hf_obj.getH()
 
 if __name__ == '__main__':
