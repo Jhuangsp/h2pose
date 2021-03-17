@@ -1,7 +1,11 @@
 import cv2
 import numpy as np
-from Hfinder import Hfinder
-from H2Pose import H2Pose
+try:
+    from Hfinder import Hfinder
+    from H2Pose import H2Pose
+except:
+    from h2pose.Hfinder import Hfinder
+    from h2pose.H2Pose import H2Pose
 
 class poseFinder(H2Pose):
     """docstring for poseFinder"""

@@ -5,7 +5,7 @@ np.set_printoptions(suppress=True)
 
 class Hfinder(object):
     """docstring for Hfinder"""
-    def __init__(self, img=None, court2D=[], court3D=[[-3.05, 6.7], [3.05, 6.7], [3.05, -6.7], [-3.05, -6.7]], pad=[250,250,250,250], downScale=False):
+    def __init__(self, img=None, court2D=[], court3D=[[-3.05, 6.7], [3.05, 6.7], [3.05, -6.7], [-3.05, -6.7]], pad=[0,0,0,0], downScale=False):
         super(Hfinder, self).__init__()
         self.pad = pad
         self.img = cv2.copyMakeBorder(img, pad[0],pad[1],pad[2],pad[3], cv2.BORDER_CONSTANT, value=[0,0,0]) # padding
@@ -44,10 +44,12 @@ class Hfinder(object):
                     cv2.destroyAllWindows()
                     break
 
-        if self.downScale:
-            self.court2D = np.array(self.court2D)*2 - np.array([[self.pad[0],self.pad[2]]]) # unpadding
+            if self.downScale:
+                self.court2D = np.array(self.court2D)*2 - np.array([[self.pad[0],self.pad[2]]]) # unpadding
+            else:
+                self.court2D = np.array(self.court2D) - np.array([[self.pad[0],self.pad[2]]]) # unpadding
         else:
-            self.court2D = np.array(self.court2D) - np.array([[self.pad[0],self.pad[2]]]) # unpadding
+            self.court2D = np.array(self.court2D)
         self.court3D = np.array(self.court3D)
         self.H, status = cv2.findHomography(self.court2D, self.court3D)
 
