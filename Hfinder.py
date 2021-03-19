@@ -46,9 +46,9 @@ class Hfinder(object):
                     break
 
             if self.downScale:
-                self.court2D = np.array(self.court2D)*2 - np.array([[self.pad[0],self.pad[2]]]) # unpadding
+                self.court2D = np.array(self.court2D)*2 - np.array([[self.pad[2],self.pad[0]]]) # unpadding
             else:
-                self.court2D = np.array(self.court2D) - np.array([[self.pad[0],self.pad[2]]]) # unpadding
+                self.court2D = np.array(self.court2D) - np.array([[self.pad[2],self.pad[0]]]) # unpadding
         else:
             self.court2D = np.array(self.court2D)
         self.court3D = np.array(self.court3D)
